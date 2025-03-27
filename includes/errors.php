@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 if (isset($_SESSION['error'])) {
     foreach ($_SESSION['error'] as $err) { ?>

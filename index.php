@@ -1,5 +1,17 @@
 
-<?php  require_once "includes/header.php"?>
+<?php 
+
+require_once "includes/header.php";
+require_once "config/config.php";
+
+
+$hotels=$conn->query("select * from hotels where status =1");
+  $hotels->execute();
+  $allHotels=$hotels->fetchall(PDO::FETCH_OBJ);
+
+
+
+?>
     <div class="hero-wrap js-fullheight" style="background-image: url('images/image_2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -17,39 +29,19 @@
     <section class="ftco-section ftco-services">
     	<div class="container">
     		<div class="row">
+				<?php  foreach($allHotels as $hotel) :?>
           <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
             <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/services-1.jpg);"></div>
+              <div class="img" style="background-image: url(images/<?php  echo $hotel->image ;?>);"></div>
               <div class="media-body py-4 px-3">
-                <h3 class="heading">Sheraton</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-                <p>Location: Cairo.</p>
-                <p><a href="rooms.html" class="btn btn-primary">View rooms</a></p>
+                <h3 class="heading"><?php echo $hotel->name ?></h3>
+                <p><?php echo $hotel->description?></p>
+                <p><?php echo $hotel->location?></p>
+                <p><a href="rooms.php?id=<?php echo $hotel->$id; ?>" class="btn btn-primary">View rooms</a></p>
               </div>
             </div>      
           </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/image_4.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">The Plaza Hote</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-				<p>Location: New york.</p>
-                <p><a href="#" class="btn btn-primary">View rooms</a></p>
-              </div>
-            </div>    
-          </div>
-          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-            <div class="d-block services-wrap text-center">
-              <div class="img" style="background-image: url(images/image_4.jpg);"></div>
-              <div class="media-body py-4 px-3">
-                <h3 class="heading">The Ritz</h3>
-                <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
-				<p>Location: Paris.</p>
-                <p><a href="#" class="btn btn-primary">View rooms</a></p>
-              </div>
-            </div>      
-          </div>
+          <?php  endforeach; ?>
         </div>
     	</div>
     </section>
@@ -249,11 +241,11 @@
 					<div class="col-md-9 text-center">
 						<h2>Ready to get started</h2>
 						<p class="mb-4">It’s safe to book online with us! Get your dream stay in clicks or drop us a line with your questions.</p>
-						<p class="mb-0"><a href="#" class="btn btn-primary px-4 py-3">Learn More</a> <a href="#" class="btn btn-white px-4 py-3">Contact us</a></p>
+						<p class="mb-0"><a href="<?php echo APPURL; ?>/about.php" class="btn btn-primary px-4 py-3">Learn More</a> <a href="<?php echo APPURL ; ?>/contact.php" class="btn btn-white px-4 py-3">Contact us</a></p>
 					</div>
 				</div>
 			</div>
 		</section>
 
 
-   <?php  require_once "includes/footer.php"?>
+   <?php  require_once "includes/footer.php";?>

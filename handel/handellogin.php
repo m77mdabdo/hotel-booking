@@ -1,11 +1,15 @@
 <?php 
+
 require_once "../APP/APP.php" ;
 
 
+if(isset($_SESSION['username'])){
+    echo "<scripr> window.location.href='".APPURL."'</script>";
+}
 
 
 if(isset($_POST['submit'])){
-    var_dump($_POST);
+   
     $email= trim(htmlspecialchars($_POST['email']));
     $password= trim(htmlspecialchars($_POST['password']));
   
@@ -40,7 +44,7 @@ if(isset($_POST['submit'])){
     if(empty($errors)){
         $login=$conn->prepare("select * from users where email=:email");
             $login->bindParam(":email",$email,PDO::PARAM_STR);
-            if($insert->execute()){
+            $login->execute();
                
             
             $fetch=$login->fetch(PDO::FETCH_ASSOC);
@@ -65,10 +69,10 @@ if(isset($_POST['submit'])){
         exit();
     }
 
-}else{
-    $_SESSION['error']=$errors;
+
+    }else{
+        $_SESSION['error']=$errors;
     header('location:../auth/login.php');
-}
     }
 
 }else{
@@ -100,16 +104,23 @@ if(isset($_POST['submit'])){
 //     if($login->rowCount()>0){
 
 //         if(password_verify($password,$fetch['mypassword'])){
-//             echo "<script> alert('LOGGED IN '); </script>";
+//             $_SESSION['username']=$fetch['username'];
+//                         $_SESSION['id']=$fetch['id'];
+//                         header("location:../index.php");
+//                             exit();
 //         }else{
-//             echo "<script> alert('email or passwod  is worng '); </script>";
+//             // $_SESSION['error'][]="Email or password is incorrect ";
+//                             header("location:../auth/login.php");
 //         }
  
 //     }else{
-//         echo "<script> alert('email or passwod  is worng '); </script>";
+//         // $_SESSION['error'][] = "No account found with this email!";
+//                header("location:../auth/login.php");
+//              exit();
 //     }
 
 // }
 // }else{
-//     header("location:../index.php");
+//     header("location:../auth/login.php");
+    
 // }
