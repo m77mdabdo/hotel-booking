@@ -1,18 +1,18 @@
-<?php 
+<?php
 
-require_once "App/APP.php" ;
+require_once "App/APP.php";
 
 // require_once "includes/header.php";
 // require_once "config/config.php";
 
 
 // $hotels=$conn->query("select * from hotels where status =1");
-//   $hotels->execute();
-//   $allHotels=$hotels->fetchall(PDO::FETCH_OBJ);
+// $hotels->execute();
+// $allHotels=$hotels->fetchall(PDO::FETCH_OBJ);
 
 // $rooms=$conn->query("select * from rooms where status =1");
-//   $rooms->execute();
-//   $allRooms=$rooms->fetchall(PDO::FETCH_OBJ);
+// $rooms->execute();
+// $allRooms=$rooms->fetchall(PDO::FETCH_OBJ);
 
 
 
@@ -38,19 +38,19 @@ require_once "App/APP.php" ;
 <section class="ftco-section ftco-services">
     <div class="container">
         <div class="row">
-            <?php  foreach($allHotels as $hotel) :?>
-            <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
-                <div class="d-block services-wrap text-center">
-                    <div class="img" style="background-image: url(images/<?php  echo $hotel->image ;?>);"></div>
-                    <div class="media-body py-4 px-3">
-                        <h3 class="heading"><?php echo $hotel->name ?></h3>
-                        <p><?php echo $hotel->description?></p>
-                        <p><?php echo $hotel->location?></p>
-                        <p><a href="rooms.php?id=<?php echo $hotel->$id; ?>" class="btn btn-primary">View rooms</a></p>
+            <?php foreach ($allHotels as $hotel) : ?>
+                <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+                    <div class="d-block services-wrap text-center">
+                        <div class="img" style="background-image: url(images/<?php echo $hotel->image; ?>);"></div>
+                        <div class="media-body py-4 px-3">
+                            <h3 class="heading"><?php echo $hotel->name ?></h3>
+                            <p><?php echo $hotel->description ?></p>
+                            <p><?php echo $hotel->location ?></p>
+                            <p><a href="rooms.php?id=<?php echo $hotel->$id; ?>" class="btn btn-primary">View rooms</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <?php  endforeach; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -63,35 +63,36 @@ require_once "App/APP.php" ;
             </div>
         </div>
         <div class="row no-gutters">
-            <?php  foreach($allRooms as $room): ?>
-            <div class="col-lg-6">
-                <div class="room-wrap d-md-flex">
-                    <a href="#" class="img" style="background-image: url(images/<?php  echo $room->image ;?>);"></a>
-                    <div class="half left-arrow d-flex align-items-center">
-                        <div class="text p-4 p-xl-5 text-center">
-                            <p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span
-                                    class="fa fa-star"></span><span class="fa fa-star"></span><span
-                                    class="fa fa-star"></span></p>
-                            <!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
-                            <h3 class="mb-3"><a
-                                    href="room-single.php?id=<?php  echo $room->id ;?>"><?php  echo $room->name;?></a>
-                            </h3>
-                            <ul class="list-accomodation">
-                                <li><span>Max:</span> <?php  echo $room->num_persons ;?></li>
-                                <li><span>Size:</span> <?php  echo $room->size ;?></li>
-                                <li><span>View:</span> <?php  echo $room->view ;?></li>
-                                <li><span>Bed:</span> <?php  echo $room->num_beds ;?></li>
-                            </ul>
-                            <p class="pt-1"><a href="room-single.php?id=<?php  echo $room->id ;?>"
-                                    class="btn-custom px-3 py-2">View Room Details<span
-                                        class="icon-long-arrow-right"></span></a></p>
+            <?php foreach ($allRooms as $room): ?>
+                <div class="col-lg-6">
+                    <div class="room-wrap d-md-flex">
+                        <a href="#" class="img" style="background-image: url(images/<?php echo $room->image; ?>);"></a>
+                        <div class="half left-arrow d-flex align-items-center">
+                            <div class="text p-4 p-xl-5 text-center">
+                                <p class="star mb-0"><span class="fa fa-star"></span><span class="fa fa-star"></span><span
+                                        class="fa fa-star"></span><span class="fa fa-star"></span><span
+                                        class="fa fa-star"></span></p>
+                                <!-- <p class="mb-0"><span class="price mr-1">$120.00</span> <span class="per">per night</span></p> -->
+                                <h3 class="mb-3"><a
+                                        href="<?php echo APPURL; ?>/rooms/room-single.php?id=<?php echo $room->id; ?>"><?php echo $room->name; ?></a>
+                                </h3>
+                                <ul class="list-accomodation">
+                                    <li><span>Max:</span> <?php echo $room->num_persons; ?></li>
+                                    <li><span>Size:</span> <?php echo $room->size; ?></li>
+                                    <li><span>View:</span> <?php echo $room->view; ?></li>
+                                    <li><span>Bed:</span> <?php echo $room->num_beds; ?></li>
+                                </ul>
+                                <p class="pt-1"><a
+                                        href="<?php echo APPURL; ?>/rooms/room-single.php?id=<?php echo $room->id; ?>"
+                                        class="btn-custom px-3 py-2">View Room Details<span
+                                            class="icon-long-arrow-right"></span></a></p>
 
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <?php endforeach ; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -209,7 +210,7 @@ require_once "App/APP.php" ;
                 <p class="mb-4">It’s safe to book online with us! Get your dream stay in clicks or drop us a line with
                     your questions.</p>
                 <p class="mb-0"><a href="<?php echo APPURL; ?>/about.php" class="btn btn-primary px-4 py-3">Learn
-                        More</a> <a href="<?php echo APPURL ; ?>/contact.php" class="btn btn-white px-4 py-3">Contact
+                        More</a> <a href="<?php echo APPURL; ?>/contact.php" class="btn btn-white px-4 py-3">Contact
                         us</a></p>
             </div>
         </div>
@@ -217,4 +218,4 @@ require_once "App/APP.php" ;
 </section>
 
 
-<?php  require_once "includes/footer.php";?>
+<?php require_once "includes/footer.php"; ?>
