@@ -2,6 +2,9 @@
 
 require_once "../handel/rooms/selecteAllSinglerooms.php";
 require_once "../handel/utilites/utilite.php";
+require_once "../includes/errors.php";
+require_once "../includes/success.php";
+
 
 
 ?>
@@ -26,24 +29,25 @@ require_once "../handel/utilites/utilite.php";
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-4">
-                <form action="#" class="appointment-form" style="margin-top: -568px;">
+                <form action="../handel/rooms/bookingRoom.php?id=<?php echo $singleRoom->id ?>" method="post"
+                    class="appointment-form" style="margin-top: -568px;">
                     <h3 class="mb-3">Book this room</h3>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="text" name="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Full Name">
+                                <input type="text" name="full_name" class="form-control" placeholder="Full Name">
                             </div>
                         </div>
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Phone Number">
+                                <input type="text" name="phone_number" class="form-control" placeholder="Phone Number">
                             </div>
                         </div>
 
@@ -51,7 +55,7 @@ require_once "../handel/utilites/utilite.php";
                             <div class="form-group">
                                 <div class="input-wrap">
                                     <div class="icon"><span class="ion-md-calendar"></span></div>
-                                    <input type="text" class="form-control appointment_date-check-in"
+                                    <input type="text" name="check_in" class="form-control appointment_date-check-in"
                                         placeholder="Check-In">
                                 </div>
                             </div>
@@ -60,7 +64,7 @@ require_once "../handel/utilites/utilite.php";
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="icon"><span class="ion-md-calendar"></span></div>
-                                <input type="text" class="form-control appointment_date-check-out"
+                                <input type="text" name="check_out" class="form-control appointment_date-check-out"
                                     placeholder="Check-Out">
                             </div>
                         </div>
@@ -69,7 +73,8 @@ require_once "../handel/utilites/utilite.php";
 
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input type="submit" value="Book and Pay Now" class="btn btn-primary py-3 px-4">
+                                <input type="submit" name="submit" value="Book and Pay Now"
+                                    class="btn btn-primary py-3 px-4">
                             </div>
                         </div>
                     </div>
@@ -110,11 +115,11 @@ require_once "../handel/utilites/utilite.php";
                         <?php foreach ($allutilitise as $utilitiese) : ?>
                         <div class="services-2 col-lg-6 d-flex w-100">
                             <div class="icon d-flex justify-content-center align-items-center">
-                                <span class="<?php echo $utilitiese->icon ; ?>"></span>
+                                <span class="<?php echo $utilitiese->icon; ?>"></span>
                             </div>
                             <div class="media-body pl-3">
-                                <h3 class="heading"><?php echo $utilitiese->name ;?></h3>
-                                <p><?php echo $utilitiese->description ;?>
+                                <h3 class="heading"><?php echo $utilitiese->name; ?></h3>
+                                <p><?php echo $utilitiese->description; ?>
                                 </p>
                             </div>
                         </div>
