@@ -1,5 +1,5 @@
 <?php
-ob_start(); // تOutput Buffering
+ob_start(); // Output buffering
 require_once "../../APP/APP.php";
 
 
@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 
     $errors = [];
 
-    // دID
+    // ID
     if (!$room_id) {
         $errors[] = "Room ID is missing.";
     }
